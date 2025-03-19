@@ -1,0 +1,5 @@
+services:
+  caddy:
+    build: .
+    volumes:
+      - ./Caddyfile-demo:/etc/caddy/Caddyfile

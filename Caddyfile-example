@@ -1,0 +1,15 @@
+{
+    tailscale {
+        auth_key "tskey-auth-etc"
+    }
+}
+
+https://demo.<tailnet>.ts.net {
+    bind tailscale/demo
+    respond "hello, tailnet!"
+}
+
+https://demo2.<tailnet>.ts.net {
+    bind tailscale/demo2
+    respond "hello, tailnet (again)!"
+}
