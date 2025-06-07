@@ -9,7 +9,12 @@ https://demo.<tailnet>.ts.net {
     respond "hello, tailnet!"
 }
 
-https://demo2.<tailnet>.ts.net {
-    bind tailscale/demo2
-    respond "hello, tailnet (again)!"
+https://authdemo.<tailnet>.ts.net {
+    bind tailscale/authdemo
+    tailscale_auth
+    reverse_proxy authenticated_application:8080 {
+        header_up X-Webauth-Name {http.auth.user.tailscale_name}
+        header_up X-Webauth-Email {http.auth.user.tailscale_user}
+    }
 }
+
